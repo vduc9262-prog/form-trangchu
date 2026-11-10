@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRP/Go - Thuê xe máy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">VRP - <span>Go</span></a>
+
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#vehicles">Thuê xe</a></li>
+                    <li><a href="#how-it-works">Cách hoạt động</a></li>
+                    <li><a href="#about">Về chúng tôi</a></li>
+                    <li><a href="#vehicles">Lịch thuê</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="btn btn-login">Đăng nhập</a>
+                <a href="#" class="btn btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero / Banner -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="hero-label">TỰ DO KHÁM PHÁ - CHỦ ĐỘNG HÀNH TRÌNH</p>
+                    <h1>Đi đâu cũng dễ.<br><span>Thuê xe thật nhanh.</span></h1>
+                    <p class="hero-description">
+                        Tìm chiếc xe phù hợp, đặt xe nhanh chóng và bắt đầu hành trình
+                        của bạn với VRP/Go.
+                    </p>
+
+                    <div class="hero-benefits">
+                        <span>✓ Xe chất lượng</span>
+                        <span>✓ Giá cả minh bạch</span>
+                        <span>✓ Đặt xe dễ dàng</span>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="hero-slider">
+                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80"
+                             alt="Xe máy trên đường" class="active">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+                             alt="Xe ô tô">
+                        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80"
+                             alt="Cung đường du lịch">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form tìm kiếm xe -->
+            <div class="container">
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="location">Địa điểm nhận xe</label>
+                        <select id="location" name="location">
+                            <option value="">Chọn địa điểm</option>
+                            <option value="vung-tau">Vũng Tàu</option>
+                            <option value="da-nang">Đà Nẵng</option>
+                            <option value="ho-chi-minh">TP. Hồ Chí Minh</option>
+                            <option value="ha-noi">Hà Nội</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pickup-date">Ngày nhận xe</label>
+                        <input type="datetime-local" id="pickup-date" name="pickup-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="return-date">Ngày trả xe</label>
+                        <input type="datetime-local" id="return-date" name="return-date">
+                    </div>
+
+                    <button type="submit" class="btn btn-search">Tìm xe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Thống kê -->
+        <section class="statistics">
+            <div class="container statistics-container">
+                <div class="stat-item">
+                    <h2>30+</h2>
+                    <p>Cửa hàng đối tác</p>
+                </div>
+                <div class="stat-item">
+                    <h2>400+</h2>
+                    <p>Xe sẵn sàng</p>
+                </div>
+                <div class="stat-item">
+                    <h2>4.8/5</h2>
+                    <p>Đánh giá khách hàng</p>
+                </div>
+                <div class="stat-item">
+                    <h2>5 phút</h2>
+                    <p>Đặt xe nhanh chóng</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Danh sách xe -->
+        <section class="vehicles section" id="vehicles">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">XE NỔI BẬT</p>
+                        <h2>Chọn xe phù hợp với hành trình</h2>
+                        <p>Xe chất lượng, giá minh bạch, sẵn sàng giao ngay.</p>
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả →</a>
+                </div>
+
+                <div class="vehicle-layout">
+                    <aside class="filter-sidebar">
+                        <div class="filter-heading">
+                            <h3>Bộ lọc</h3>
+                            <button type="button" class="btn-reset">Đặt lại</button>
+                        </div>
+
+                        <div class="filter-group">
+                            <p class="filter-title">Loại xe</p>
+                            <label><input type="checkbox" name="type" value="xe-may"> Xe máy</label>
+                            <label><input type="checkbox" name="type" value="xe-dien"> Xe điện</label>
+                            <label><input type="checkbox" name="type" value="o-to"> Ô tô</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <p class="filter-title">Giá thuê / ngày</p>
+                            <label><input type="radio" name="price" value="under-200"> Dưới 200.000đ</label>
+                            <label><input type="radio" name="price" value="200-400"> 200.000đ - 400.000đ</label>
+                            <label><input type="radio" name="price" value="over-400"> Trên 400.000đ</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <p class="filter-title">Địa điểm</p>
+                            <label><input type="checkbox" name="place" value="ha-noi"> Hà Nội</label>
+                            <label><input type="checkbox" name="place" value="hcm"> TP.HCM</label>
+                            <label><input type="checkbox" name="place" value="da-nang"> Đà Nẵng</label>
+                            <label><input type="checkbox" name="place" value="vung-tau"> Vũng Tàu</label>
+                        </div>
+
+                        <p class="filter-note">Có thể kết hợp nhiều bộ lọc cùng lúc.</p>
+                    </aside>
+
+                    <div class="vehicle-grid-wrap">
+                        <div class="vehicle-grid">
+                            <article class="vehicle-card">
+                                <div class="vehicle-image">
+                                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="Honda Vision">
+                                    <button type="button" class="favorite-btn" aria-label="Yêu thích">♡</button>
+                                </div>
+                                <div class="vehicle-info">
+                                    <p class="vehicle-type">Xe máy</p>
+                                    <div class="vehicle-title">
+                                        <h3>Honda Vision</h3>
+                                        <span class="rating">★ 4.9 (128)</span>
+                                    </div>
+                                    <p class="vehicle-specs">Xe ga · Tự động · Hà Nội</p>
+                                    <div class="vehicle-card-bottom">
+                                        <p class="vehicle-price">150.000đ <span>/ ngày</span></p>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="vehicle-card">
+                                <div class="vehicle-image">
+                                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80" alt="Yamaha Janus">
+                                    <button type="button" class="favorite-btn" aria-label="Yêu thích">♡</button>
+                                </div>
+                                <div class="vehicle-info">
+                                    <p class="vehicle-type">Xe máy</p>
+                                    <div class="vehicle-title">
+                                        <h3>Yamaha Janus</h3>
+                                        <span class="rating">★ 4.8 (96)</span>
+                                    </div>
+                                    <p class="vehicle-specs">Xe ga · Tự động · Đà Nẵng</p>
+                                    <div class="vehicle-card-bottom">
+                                        <p class="vehicle-price">160.000đ <span>/ ngày</span></p>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="vehicle-card">
+                                <div class="vehicle-image">
+                                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="VinFast VF e34">
+                                    <button type="button" class="favorite-btn" aria-label="Yêu thích">♡</button>
+                                </div>
+                                <div class="vehicle-info">
+                                    <p class="vehicle-type">Ô tô điện</p>
+                                    <div class="vehicle-title">
+                                        <h3>VinFast VF e34</h3>
+                                        <span class="rating">★ 4.7 (54)</span>
+                                    </div>
+                                    <p class="vehicle-specs">Ô tô · Tự động · TP.HCM</p>
+                                    <div class="vehicle-card-bottom">
+                                        <p class="vehicle-price">850.000đ <span>/ ngày</span></p>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="vehicle-card">
+                                <div class="vehicle-image">
+                                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="VinFast Evo200">
+                                    <button type="button" class="favorite-btn" aria-label="Yêu thích">♡</button>
+                                </div>
+                                <div class="vehicle-info">
+                                    <p class="vehicle-type">Xe điện</p>
+                                    <div class="vehicle-title">
+                                        <h3>VinFast Evo200</h3>
+                                        <span class="rating">★ 4.6 (31)</span>
+                                    </div>
+                                    <p class="vehicle-specs">Xe điện · Tự động · Vũng Tàu</p>
+                                    <div class="vehicle-card-bottom">
+                                        <p class="vehicle-price">220.000đ <span>/ ngày</span></p>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hướng dẫn thuê xe -->
+        <section class="how-it-works section" id="how-it-works">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">ĐẶT XE DỄ DÀNG</p>
+                        <h2>3 bước, sẵn sàng lên đường</h2>
+                        <p>Mọi thông tin rõ ràng ngay trên VRP/Go.</p>
+                    </div>
+                </div>
+
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <span class="step-number">01</span>
+                        <div class="step-icon">⌕</div>
+                        <h3>Tìm xe phù hợp</h3>
+                        <p>Chọn địa điểm, thời gian thuê và lọc xe theo nhu cầu của bạn.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">02</span>
+                        <div class="step-icon">▣</div>
+                        <h3>Đặt xe và thanh toán</h3>
+                        <p>Chọn xe, xác nhận thông tin thuê và hoàn tất đặt xe.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">03</span>
+                        <div class="step-icon">➜</div>
+                        <h3>Nhận xe và khám phá</h3>
+                        <p>Kiểm tra xe, nhận bàn giao và bắt đầu hành trình của bạn.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner quảng bá -->
+        <section class="promo" id="about">
+            <div class="container promo-container">
+                <div class="promo-content">
+                    <p class="section-label">VRP/GO · DU LỊCH TỰ DO</p>
+                    <h2>Chuyến đi của bạn.<br><span>Quyền lựa chọn của bạn.</span></h2>
+                    <p>Đặt xe minh bạch, chủ động thời gian và tận hưởng từng cung đường.</p>
+                    <a href="#vehicles" class="btn btn-promo">Khám phá ngay</a>
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85"
+                         alt="Xe máy và hành trình khám phá">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="logo">VRP - <span>Go</span></a>
+                    <p>Nền tảng thuê xe máy đáng tin cậy, giúp bạn chủ động hành trình mỗi ngày.</p>
+
+                    <div class="social-links">
+                        <a href="#" class="facebook" title="Facebook" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V10H7.6v3h2.7v8h3.2z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="tiktok" title="TikTok" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M19.6 7.1a5.3 5.3 0 0 1-3.3-1.1V15a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.4a2.8 2.8 0 1 0 1.6 2.5V2.5h3.4c.2 2.1 1.6 3.7 3.3 4.2v.4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="zalo" title="Zalo" aria-label="Zalo">
+                            <span>Zalo</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Khám phá</h3>
+                    <a href="#vehicles">Thuê xe</a>
+                    <a href="#how-it-works">Cách hoạt động</a>
+                    <a href="#about">Về VRP/Go</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <a href="#">Trung tâm trợ giúp</a>
+                    <a href="#">Chính sách thuê xe</a>
+                    <a href="#">Câu hỏi thường gặp</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <a href="mailto:hello@vrpgo.vn">hello@vrpgo.vn</a>
+                    <a href="tel:19001234">1900 1234</a>
+                </div>
+
+                <div class="footer-column footer-address">
+                    <h3>Địa chỉ</h3>
+                    <p>Phường Yên Ninh, TP. Yên Bái, Yên Bái</p>
+                    <p>Phường Tiền Phong, TP. Thái Bình, Thái Bình</p>
+                    <p>Phường Tân Giang, TP. Hà Tĩnh, Hà Tĩnh</p>
+                    <p>Phường Tràng Tiền, Q. Hoàn Kiếm, Hà Nội</p>
+                    <p>Phường Bãi Cháy, TP. Hạ Long, Quảng Ninh</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 VRP/Go. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
